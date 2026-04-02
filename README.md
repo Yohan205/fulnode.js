@@ -1,11 +1,10 @@
+[![npm](https://img.shields.io/npm/v/fulnode.js.svg)](https://www.npmjs.com/package/fulnode.js)
+[![install size](https://packagephobia.now.sh/badge?p=fulnode.js)](https://packagephobia.now.sh/result?p=fulnode.js)
+
 # fulnode.js
 Biblioteca de funciones y utilidades para Node.js
-[![npm](https://img.shields.io/npm/v/@yohancolla/fulnode.js.svg)](https://www.npmjs.com/package/@yohancolla/fulnode.js)
-[![npm](https://img.shields.io/npm/dt/@yohancolla/fulnode.js.svg?maxAge=3600)](https://www.npmjs.com/package/@yohancolla/fulnode.js)
-[![install size](https://packagephobia.now.sh/badge?p=@yohancolla/fulnode.js)](https://packagephobia.now.sh/result?p=@yohancolla/fulnode.js)
 
-
-[![NPM](https://nodei.co/npm/@yohancolla/fulnode.js.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/@yohancolla/fulnode.js/)
+[![NPM](https://nodei.co/npm/fulnode.js.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/fulnode.js/)
 
 Este repositorio contiene una colección de utilidades pequeñas y reutilizables (formatos de fecha, manejo de tamaños, porcentajes, identificación UUIDs, cifrado/descifrado y utilidades de red) pensadas para uso en proyectos Node.js.
 
