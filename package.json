@@ -1,6 +1,6 @@
 {
   "name": "fulnode.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Functions and Utilities Library for NodeJS",
   "files": [
     "dist",
