@@ -1,0 +1,47 @@
+{
+  "name": "fulnode.js",
+  "version": "0.1.0",
+  "description": "Functions and Utilities Library for NodeJS",
+  "files": [
+    "dist/**/*"
+  ],
+  "homepage": "https://github.com/Yohan205/fulnode.js#readme",
+  "bugs": {
+    "url": "https://github.com/Yohan205/fulnode.js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yohan205/fulnode.js.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "Utils",
+    "Bytes",
+    "Convert",
+    "Percent",
+    "mstime",
+    "Size",
+    "uuid",
+    "Format",
+    "Date",
+    "Cipher",
+    "Encrypt",
+    "Decrypt",
+    "crypto"
+  ],
+  "license": "MIT",
+  "author": "YohanColla",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "node test.js",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^6.0.2"
+  }
+}
