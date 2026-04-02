@@ -3,7 +3,8 @@
   "version": "1.0.1",
   "description": "Functions and Utilities Library for NodeJS",
   "files": [
-    "dist/**/*"
+    "dist",
+    "README.md"
   ],
   "homepage": "https://github.com/Yohan205/fulnode.js#readme",
   "bugs": {
