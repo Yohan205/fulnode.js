@@ -42,21 +42,22 @@ async function encryptString(text, secret, options = {}) {
     const iv = (0, crypto_1.randomBytes)(alg.ivLength);
     const cipher = (0, crypto_1.createCipheriv)(algorithm, key, iv);
     const encrypted = Buffer.concat([cipher.update(compressed), cipher.final()]);
-    const headerPrefix = `FULNODE.1.yec.${algorithm}`;
-    const remaining = {
-        compression: 'brotli',
-        iv: iv.toString('hex'),
-        encoding,
-    };
+    // For string format (.yec) we produce a compact header without JSON.
+    // New Format: yec.1.<algorithm>.<ivHex>[.<authTagHex>][.<encoding>]\n\n<data>
+    const ivHex = iv.toString('hex');
+    const fmt = 'yec';
+    const parts = [fmt, '1', algorithm, ivHex];
     if (alg.authTagRequired) {
         const tag = cipher.getAuthTag();
         if (!tag)
             throw new Error('missing auth tag after encryption');
-        remaining.authTag = tag.toString('hex');
+        parts.push(tag.toString('hex'));
     }
-    const headerBlock = `${headerPrefix}\n${JSON.stringify(remaining)}`;
+    if (encoding)
+        parts.push(encoding);
+    const headerLine = parts.join('.');
     const dataEncoded = encoding === 'hex' ? encrypted.toString('hex') : encrypted.toString('base64');
-    return `${headerBlock}\n\n${dataEncoded}`;
+    return `${headerLine}\n\n${dataEncoded}`;
 }
 async function encryptFile(inputPath, outputPath, secret, options = {}) {
     const format = options.format ?? 'myec';
@@ -91,7 +92,7 @@ async function encryptFile(inputPath, outputPath, secret, options = {}) {
                 throw new Error('missing auth tag after encryption');
             authTagHex = tag.toString('hex');
         }
-        const headerPrefix = `FULNODE.1.myec.${algorithm}`;
+        const headerPrefix = `myec.1.${algorithm}`;
         const remaining = {
             compression: 'brotli',
             iv: iv.toString('hex'),

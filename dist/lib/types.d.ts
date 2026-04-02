@@ -11,7 +11,7 @@ export interface AlgorithmConfig {
     authTagRequired: boolean;
 }
 export interface HeaderMetadata {
-    magic: 'FULNODE';
+    magic?: 'FULNODE';
     version: number;
     format: 'yec' | 'myec';
     algorithm: 'aes-256-gcm' | 'aes-192-cbc';

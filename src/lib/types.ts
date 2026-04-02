@@ -14,7 +14,8 @@ export interface AlgorithmConfig {
 }
 
 export interface HeaderMetadata {
-  magic: 'FULNODE';
+  // `magic` removed from header output; keep optional for legacy compatibility
+  magic?: 'FULNODE';
   version: number;
   format: 'yec' | 'myec';
   algorithm: 'aes-256-gcm' | 'aes-192-cbc';
