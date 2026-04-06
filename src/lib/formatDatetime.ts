@@ -1,5 +1,8 @@
 /**
- * @param date - Data of type Date.
+ * | format |
+ * Devuelve una representación útil de la hora y la fecha para un objeto `Date`.
+ * @param {Date} date - Objeto Date a formatear.
+ * @return {{hour: string, date: string}} - Objeto con `hour` y `date`.
  */
 export function format(date: Date) {
   if (!date) throw new Error('you have not defined the "date" parameter');
@@ -17,7 +20,10 @@ export function format(date: Date) {
 }
 
 /**
- * @param ms - The time in milliseconds
+ * | mstime |
+ * Convierte milisegundos en un desglose de años, meses, semanas, días, horas, minutos y segundos.
+ * @param {number} ms - El tiempo en milisegundos.
+ * @return {{years:number,months:number,weeks:number,days:number,hours:number,minutes:number,seconds:number}}
  */
 export function mstime(ms: number) {
   if (ms == null || isNaN(ms))
@@ -44,11 +50,11 @@ export function mstime(ms: number) {
 }
 
 /**
- * Convert a timestamp (seconds or milliseconds) or Date to the same
- * duration breakdown as `mstime`, computed as the absolute difference
- * between now and the provided timestamp.
- *
- * @param timestamp - Number (seconds or milliseconds), string, or Date
+ * | timestampToDate |
+ * Convierte un timestamp (segundos o milisegundos) o un `Date` al mismo desglose
+ * retornado por `mstime`, calculando la diferencia absoluta entre ahora y el timestamp.
+ * @param {number|string|Date} timestamp - Timestamp en segundos/milisegundos, string numérico o Date.
+ * @return {{years:number,months:number,weeks:number,days:number,hours:number,minutes:number,seconds:number}}
  */
 export function timestampToDate(timestamp: number | string | Date) {
   if (timestamp == null)

@@ -1,5 +1,8 @@
 /**
- * @param {number} length specifies the length of the string to return (if not specified, defaults to 18)
+ * | v1 |
+ * Genera un identificador numérico aleatorio de longitud fija.
+ * @param {number} [length=18] - Longitud del identificador a generar.
+ * @return {string} - Identificador generado compuesto solo por dígitos.
  */
 export function v1(length: number = 18) {
   if (typeof length !== "number" || !Number.isInteger(length))
@@ -15,6 +18,12 @@ export function v1(length: number = 18) {
   return id;
 }
 
+/**
+ * | v2 |
+ * Genera un identificador alfanumérico aleatorio de longitud fija.
+ * @param {number} [length=18] - Longitud del identificador a generar.
+ * @return {string} - Identificador generado con mayúsculas, minúsculas y dígitos.
+ */
 export function v2(length: number = 18) {
   if (typeof length !== "number" || !Number.isInteger(length))
     throw new TypeError('the "length" parameter must be an integer');
@@ -29,6 +38,12 @@ export function v2(length: number = 18) {
   return id;
 }
 
+/**
+ * | v4 |
+ * Genera un UUID v4, intentando usar `crypto.randomUUID` si está disponible,
+ * si no, genera un fallback compatible con RFC4122 v4.
+ * @return {string} - UUID versión 4.
+ */
 export function v4() {
   if (typeof crypto !== "undefined" && typeof (crypto as any).randomUUID === "function") {
     return (crypto as any).randomUUID();

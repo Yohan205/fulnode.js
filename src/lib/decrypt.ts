@@ -75,6 +75,14 @@ function parseHeaderFromString(payload: string): { header: HeaderMetadata; dataE
   return { header, dataEncoded };
 }
 
+/**
+ * | decryptString |
+ * Desencripta una cadena previamente encriptada por `encryptString` y devuelve
+ * el texto original en UTF-8.
+ * @param {string} encrypted - Cadena encriptada (formato compacto `.yec`).
+ * @param {string} secret - Clave secreta usada para derivar la llave.
+ * @return {Promise<string>} - Texto plano desencriptado.
+ */
 export async function decryptString(encrypted: string, secret: string): Promise<string> {
   const { header, dataEncoded } = parseHeaderFromString(encrypted);
 
@@ -179,6 +187,15 @@ async function extractHeaderFromStream(readStream: NodeJS.ReadableStream): Promi
   });
 }
 
+/**
+ * | decryptFile |
+ * Desencripta un archivo producido por `encryptFile` y escribe el contenido
+ * descomprimido en `outputPath`.
+ * @param {string} inputPath - Ruta del archivo encriptado.
+ * @param {string} outputPath - Ruta donde se escribirá el archivo desencriptado.
+ * @param {string} secret - Clave secreta para la derivación de la llave.
+ * @return {Promise<void>} - Promesa que resuelve cuando la operación finaliza.
+ */
 export async function decryptFile(inputPath: string, outputPath: string, secret: string): Promise<void> {
   const readStream = createReadStream(inputPath);
   let header: HeaderMetadata;

@@ -3,7 +3,9 @@ import * as https from 'https';
 import type { IncomingMessage } from 'http';
 
 /**
+ * | getLocalIPs |
  * Devuelve las direcciones IPv4 locales (no loopback).
+ * @return {string[]} - Lista de direcciones IPv4 locales.
  */
 export function getLocalIPs(): string[] {
   const interfaces = os.networkInterfaces();
@@ -23,8 +25,10 @@ export function getLocalIPs(): string[] {
 }
 
 /**
+ * | getPublicIP |
  * Obtiene la IP pública consultando un servicio externo (ipify).
- * Devuelve una promesa que resuelve la IP como string.
+ * @param {number} [timeout=5000] - Tiempo máximo en ms para la petición.
+ * @return {Promise<string>} - Promesa que resuelve con la IP pública.
  */
 export function getPublicIP(timeout = 5000): Promise<string> {
   return new Promise((resolve, reject) => {

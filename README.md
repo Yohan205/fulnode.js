@@ -21,6 +21,8 @@ Este repositorio contiene una colección de utilidades pequeñas y reutilizables
 	- [timestampToDate](#timestamptodate)
 	- [size](#size)
 	- [percent](#percent)
+	- [countFiles](#countfiles)
+	- [memoryUsedRAM](#memoryusedram)
 	- [getLocalIPs](#getlocalips)
 	- [getPublicIP](#getpublicip)
 	- [encryptString](#encryptstring)
@@ -411,6 +413,49 @@ const { decryptFile } = require('fulnode.js');
 decryptFile('out.myec', 'out.bin', 'mi-secreto').then(() => console.log('ok'));
 // /**
 //  * Result: fichero 'out.bin' creado con los datos originales.
+//  */
+```
+
+<a id="countfiles"></a>
+### countFiles(ruta, extension)
+
+Cuenta el número total de archivos con una extensión específica dentro de un directorio y sus subdirectorios inmediatos.
+
+| Parámetro | Tipo | Descripción | Opcional | Valor por defecto |
+|---|---:|---|---:|---:|
+| `ruta` | `string` | Ruta del directorio raíz a inspeccionar. | No | - |
+| `extension` | `string` | Extensión del archivo con o sin `.` (ej: `'.txt'` o `'txt'`). | No | - |
+
+Ejemplo:
+
+```js
+const { countFiles } = require('fulnode.js');
+console.log(countFiles('./tests', 'js'));
+// /**
+//  * Return:
+//  * ~$ 12
+//  */
+```
+
+<a id="memoryusedram"></a>
+### memoryUsedRAM()
+
+Devuelve información del uso de memoria del sistema y del proceso en formato legible (usa `size()` internamente).
+
+| Parámetro | Tipo | Descripción | Opcional | Valor por defecto |
+|---|---:|---|---:|---:|
+| (ninguno) | - | - | Sí | - |
+
+Retorna un objeto con las propiedades: `max`, `free`, `used`, `usedByProcess` (todas `string`).
+
+Ejemplo:
+
+```js
+const { memoryUsedRAM } = require('fulnode.js');
+console.log(memoryUsedRAM());
+// /**
+//  * Return (ejemplo):
+//  * ~$ { max: '15.9 GiB', free: '7.2 GiB', used: '8.7 GiB', usedByProcess: '120.3 MiB' }
 //  */
 ```
 

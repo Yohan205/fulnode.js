@@ -1,7 +1,11 @@
 /**
- * @param portion - Proportionality of the specified total.
- * @param total - Total of specified proportionality.
- * @param fixed - The number of digits to appear after the decimal point (default 2, to remove set to 0)
+ * | percent |
+ * Calcula el porcentaje que representa `portion` respecto a `total` y lo devuelve con
+ * el número de decimales especificado.
+ * @param {number} portion - Parte o porción del total.
+ * @param {number} total - Total respecto al que se calcula el porcentaje.
+ * @param {number} [fixed=2] - Número de decimales en el resultado.
+ * @return {number} - Porcentaje calculado (ej. 12.34).
  */
 export function percent(portion: number, total: number, fixed: number = 2) {
   if (portion == null || isNaN(portion))

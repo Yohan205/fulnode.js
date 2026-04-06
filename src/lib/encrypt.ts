@@ -25,6 +25,15 @@ function brotliCompressPromise(input: Buffer, opts?: Partial<BrotliOptions>): Pr
   });
 }
 
+/**
+ * | encryptString |
+ * Encripta una cadena de texto usando el algoritmo y opciones especificadas.
+ * Devuelve una cadena con cabecera compacta y el cuerpo codificado.
+ * @param {string} text - Texto plano a encriptar.
+ * @param {string} secret - Clave secreta usada para derivar la llave.
+ * @param {EncryptOptions} [options] - Opciones de compresión/algoritmo.
+ * @return {Promise<string>} - Texto cifrado en formato `.yec` compacto.
+ */
 export async function encryptString(
   text: string,
   secret: string,
@@ -65,6 +74,16 @@ export async function encryptString(
   return `${headerLine}\n\n${dataEncoded}`;
 }
 
+/**
+ * | encryptFile |
+ * Encripta un archivo en `inputPath` y escribe el resultado en `outputPath`.
+ * Incluye cabecera JSON y cuerpo comprimido+encriptado.
+ * @param {string} inputPath - Ruta del archivo de entrada.
+ * @param {string} outputPath - Ruta del archivo de salida.
+ * @param {string} secret - Clave secreta para la derivación de la llave.
+ * @param {EncryptOptions} [options] - Opciones de cifrado y compresión.
+ * @return {Promise<void>} - Promesa que resuelve al completar la operación.
+ */
 export async function encryptFile(
   inputPath: string,
   outputPath: string,
